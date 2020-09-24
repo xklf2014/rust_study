@@ -190,22 +190,36 @@ impl List {
         match *self {
             Cons(head, ref tail) => {
                 format!("{},{}", head, tail.stringify())
-            },
+            }
             Nil => {
                 format!("Nil")
-            },
+            }
         }
-
     }
 }
 
-pub fn linked_list_test(){
+pub fn linked_list_test() {
     let mut list = List::new();
     list = list.prepend(1);
     list = list.prepend(2);
     list = list.prepend(3);
 
-    println!("linked list has length: {}",list.len());
-    println!("{}",list.stringify());
+    println!("linked list has length: {}", list.len());
+    println!("{}", list.stringify());
+}
+
+static LANGUAGE: &str = "RUST";
+const THRESHOLD: i32 = 10;
+
+fn is_big(n: i32) -> bool {
+    n > THRESHOLD
+}
+
+pub fn constant_test() {
+    let n = 6;
+    println!("this is {}", LANGUAGE);
+    println!("the threshold is {}", THRESHOLD);
+    println!("{} is {}",n,if is_big(n){"big"}else{"small"});
+    //THRESHOLD = 5; //cannot assign to this expression
 }
 
