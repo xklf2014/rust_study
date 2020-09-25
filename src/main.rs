@@ -6,7 +6,10 @@ use std::fmt;
 #[path = "slicesArrays.rs"] mod sa;
 #[path = "custom_types.rs"] mod ctr;
 #[path = "variable_binding.rs"] mod vb;
-
+#[path = "types.rs"] mod ts;
+#[path = "conversion.rs"] mod cs;
+#[path = "expressions.rs"] mod eps;
+#[path = "flow_of_control.rs"] mod fic;
 
 fn main() {
     //b::basicTest();
@@ -22,6 +25,19 @@ fn main() {
     //vb::test_mutability();
     //vb::test_scope_and_shadowing();
     //vb::test_declare_first();
-    vb::test_freezing();
-
+    //vb::test_freezing();
+    //ts::test_casting();
+    //ts::test_literals();
+    //ts::test_inference();
+    //ts::test_aliasing();
+    //cs::test_from();
+    //cs::test_into();
+    //cs::test_try_from_and_into();
+    //cs::test_convering_to_string();
+    //cs::test_parsing_string();
+    //eps::test_expressions();
+    //fic::test_if_else();
+    //fic::test_loop();
+    //fic::test_nesting_and_lables();
+    fic::test_returning_from_loops();
 }
