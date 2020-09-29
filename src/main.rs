@@ -39,5 +39,12 @@ fn main() {
     //fic::test_if_else();
     //fic::test_loop();
     //fic::test_nesting_and_lables();
-    fic::test_returning_from_loops();
+    //fic::test_returning_from_loops();
+    //fic::test_while();
+    //fic::test_for_and_range();
+    //fic::test_iterators();
+    //fic::test_match();
+    //fic::test_tuples();
+    //fic::test_enum();
+    fic::test_pointer_and_ref();
 }
