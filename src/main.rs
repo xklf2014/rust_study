@@ -10,6 +10,7 @@ use std::fmt;
 #[path = "conversion.rs"] mod cs;
 #[path = "expressions.rs"] mod eps;
 #[path = "flow_of_control.rs"] mod fic;
+#[path = "functions.rs"] mod fs;
 
 fn main() {
     //b::basicTest();
@@ -46,5 +47,12 @@ fn main() {
     //fic::test_match();
     //fic::test_tuples();
     //fic::test_enum();
-    fic::test_pointer_and_ref();
+    //fic::test_pointer_and_ref();
+    //fic::test_structs();
+    //fic::test_guard();
+    //fic::test_binding();
+    //fic::test_if_let();
+    //fic::test_while_let();
+    //fs::test_function();
+    fs::test_methods();
 }

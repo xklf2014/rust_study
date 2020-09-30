@@ -214,7 +214,7 @@ pub fn test_pointer_and_ref() {
     }
 
     match *refernece {
-        val => println!{ "Got a value via dereferencing: {:?}", val }
+        val => println! {"Got a value via dereferencing: {:?}", val}
     }
 
     let _not_a_reference = 3;
@@ -223,14 +223,155 @@ pub fn test_pointer_and_ref() {
     let mut mut_value = 6;
 
     match value {
-        ref r =>  println!("Got a reference to a value: {:?}", r),
+        ref r => println!("Got a reference to a value: {:?}", r),
     }
 
     match mut_value {
-        ref mut m =>{
+        ref mut m => {
             *m += 10;
             println!("We added 10. `mut_value`: {:?}", m);
-        },
+        }
+    }
+}
+
+pub fn test_structs() {
+    struct Foo {
+        x: (u32, u32),
+        y: u32,
+    }
+
+    let foo = Foo { x: (1, 2), y: 3 };
+    //匹配第一个符合条件的语句
+    match foo {
+        Foo { x: (1, b), y } => print!("First of x is 1, b = {},  y = {} ", b, y),
+        Foo { y: 2, x: i } => println!("y is 2, i = {:?}", i),
+        Foo { y, .. } => println!("y = {}, we don't care about x", y),
+    }
+}
+
+pub fn test_guard() {
+    let pair = (2, -2);
+    println!("Tell me about {:?}", pair);
+
+    match pair {
+        (x, y) if x == y => println!("These are twins"),
+        (x, y) if x + y == 0 => println!("Antimatter, kaboom!"),
+        (x, _) if x % 2 == 1 => println!("The first one is odd"),
+        _ => println!("No correlation..."),
+    }
+}
+
+fn age() -> u32 {
+    15
+}
+
+fn some_number() -> Option<u32> {
+    Some(42)
+}
+
+pub fn test_binding() {
+    println!("Tell me what type of person you are");
+
+    match age() {
+        0 => println!("I haven't celebrated my first birthday yet"),
+        n @ 1..=12 => println!("I'm a child of age {:?}", n),
+        n @ 13..=19 => println!("I'm a teen of age {:?}", n),
+        n => println!("I'm an old person of age {:?}", n),
+    }
+
+    match some_number() {
+        Some(n @ 42) => println!("The answer is: {}", n),
+        Some(n) => println!("Not interesting... {}", n),
+        _ => (),
+    }
+}
+
+pub fn test_if_let() {
+    let number = Some(7);
+    let letter: Option<i32> = None;
+    let emoticon: Option<i32> = None;
+
+    if let Some(i) = number {
+        println!("Matched {:?}", i);
+    }
+
+    if let Some(i) = letter {
+        println!("Matched {:?}", i);
+    } else {
+        println!("Didn't match a number. Let's go with a letter!");
+    }
+
+    let i_like_letters = false;
+    if let Some(i) = emoticon {
+        println!("Matched {:?}", i);
+    } else if i_like_letters {
+        println!("Didn't match a number. Let's go with a letter!")
+    } else {
+        println!("I don't like letters. Let's go with an emoticon :)!");
+    }
+
+    enum Foo {
+        Bar,
+        Baz,
+        Qux(u32),
+    }
+
+    let a = Foo::Bar;
+    let b = Foo::Baz;
+    let c = Foo::Qux(100);
+
+    if let Foo::Bar = a {
+        println!("a is foobar");
+    }
+
+    if let Foo::Bar = b {
+        println!("b is foobar");
+    }
+
+    if let Foo::Qux(value) = c {
+        println!("c is {}", value);
+    }
+
+    if let Foo::Qux(value @ 100) = c {
+        println!("c is one hundred");
+    }
+
+    enum Foo1 { Bar }
+
+    let a = Foo1::Bar;
+    if let Foo1::Bar = a {
+        println!("a is foobar");
+    }
+}
+
+pub fn test_while_let() {
+    let mut optional = Some(0);
+
+    loop {
+        match optional {
+            Some(i) => {
+                if i > 9 {
+                    println!("Greater than 9, quit!");
+                    optional = None;
+                } else {
+                    println!("`i` is `{:?}`. Try again.", i);
+                    optional = Some(i + 1);
+                }
+            }
+            _ => { break; }
+        }
+    }
+
+    println!("-------------分割线---------------");
+    let mut optional1 = Some(0);
+    while let Some(i) = optional1{
+        if i > 9 {
+            println!("Greater than 9, quit!");
+            optional1 = None;
+        } else {
+            println!("`i` is `{:?}`. Try again.", i);
+            optional1 = Some(i + 1);
+        }
     }
 
 }
