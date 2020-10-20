@@ -54,5 +54,15 @@ fn main() {
     //fic::test_if_let();
     //fic::test_while_let();
     //fs::test_function();
-    fs::test_methods();
+    //fs::test_methods();
+    //fs::test_closures();
+    //fs::test_capturing();
+    //fs::test_as_input_parameters();
+    //fs::test_anonymity();
+    //fs::test_input_function();
+    //fs::test_as_output_parameters();
+    //fs::test_iterator();
+    //fs::test_searching_through_iterators();
+    //fs::test_hos();
+    fs::test_driverging_functions();
 }
