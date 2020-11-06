@@ -1,7 +1,7 @@
 pub fn basicTest(){
     //println!("Hello, world!");
     /*    let stdout = stdout();
-        let message = String::from("Hello my first rust");
+        let message = String::from("Hello modules.my2 first rust");
         let width =message.chars().count();
 
         let mut writer = BufWriter::new(stdout.lock());

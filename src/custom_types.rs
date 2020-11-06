@@ -81,7 +81,7 @@ pub fn inspect(event: WebEvent) {
 
 pub fn enum_test() {
     let pressed = WebEvent::KeyPress('x');
-    let pasted = WebEvent::Paste("my text".to_owned());
+    let pasted = WebEvent::Paste("modules.my2 text".to_owned());
     let click = WebEvent::Click { x: 20, y: 40 };
     let load = WebEvent::PageLoad;
     let unload = WebEvent::PageUnload;
